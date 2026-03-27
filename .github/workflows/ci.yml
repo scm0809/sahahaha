@@ -1,13 +1,19 @@
-name: 기본 CI 파이프라인 (과제 1)
+name: CI 파이프라인 (과제 1 & 과제 2 Matrix)
 
-# 어떤 상황에서 작동할지 (트리거)
 on:
   push:
-    branches: [ "main" ] # 메인 브랜치에 코드가 올라올 때 실행
+    branches: [ "main" ]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest # 깃허브가 빌려주는 가상 컴퓨터(우분투)
+    # 💡 [과제 2 수정 포인트 1] Matrix 전략 설정
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] # 우분투, 윈도우, 맥OS 3가지 환경
+        python-version: ['3.10', '3.11'] # 파이썬 3.10, 3.11 2가지 버전
+    
+    # 💡 [과제 2 수정 포인트 2] 위에서 정의한 OS 변수 사용
+    runs-on: ${{ matrix.os }} 
 
     steps:
     - name: 1. 내 코드 가져오기 (Checkout)
@@ -16,20 +22,22 @@ jobs:
     - name: 2. 파이썬 환경 세팅
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        # 💡 [과제 2 수정 포인트 3] 위에서 정의한 파이썬 버전 변수 사용
+        python-version: ${{ matrix.python-version }} 
 
     - name: 3. 필요 패키지 설치
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
+        # Windows 환경 호환성을 위해 if문 수정
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      # Windows 실행 시 bash 쉘을 명시적으로 사용
+      shell: bash
 
     - name: 4. 코드 문법 검사 (Lint)
       run: |
-        # 치명적인 문법 오류만 간단히 검사합니다.
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
     - name: 5. 단위 테스트 실행 (Test)
       run: |
-        # 아까 만든 test_main.py가 성공하는지 검사합니다.
         pytest
