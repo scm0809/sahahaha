@@ -1,0 +1,55 @@
+name: 복합 워크플로우 (과제 4)
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # 💡 [과제 4 포인트 1] 1단계: 빌드 Job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. 내 코드 가져오기
+        uses: actions/checkout@v4
+      
+      - name: 2. 빌드 수행 (가짜 파일 생성)
+        run: echo "성공적으로 빌드된 프로그램 파일입니다!" > build_result.txt
+      
+      - name: 3. 아티팩트 업로드 (결과물 저장)
+        # 💡 [과제 4 포인트 4] 1번 Job에서 만든 결과물을 깃허브 공간에 잠시 업로드해둡니다.
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-app-build
+          path: build_result.txt
+
+  # 💡 [과제 4 포인트 1] 2단계: 테스트 Job
+  test:
+    needs: build # 💡 [과제 4 포인트 2] build 작업이 성공해야만 실행됨!
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. 아티팩트 다운로드 (빌드 결과물 가져오기)
+        # 💡 [과제 4 포인트 4] 앞서 저장해둔 아티팩트를 다운로드합니다.
+        uses: actions/download-artifact@v4
+        with:
+          name: my-app-build
+          
+      - name: 2. 테스트 수행
+        run: |
+          echo "가져온 파일의 내용은 다음과 같습니다:"
+          cat build_result.txt
+          echo "테스트를 완벽하게 통과했습니다! ✅"
+
+  # 💡 [과제 4 포인트 1] 3단계: 배포 Job
+  deploy:
+    needs: test # 💡 [과제 4 포인트 2] test 작업이 성공해야만 실행됨!
+    if: github.ref == 'refs/heads/main' # 💡 [과제 4 포인트 3] main 브랜치일 때만 배포 진행!
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. 아티팩트 다운로드
+        uses: actions/download-artifact@v4
+        with:
+          name: my-app-build
+          
+      - name: 2. 실제 서버 배포 수행 (시뮬레이션)
+        run: |
+          echo "🚀 운영 서버로 결과물을 전송하여 배포를 완료했습니다!"
