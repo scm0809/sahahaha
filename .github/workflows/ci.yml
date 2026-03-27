@@ -44,7 +44,7 @@ jobs:
     - name: 6. 시크릿(비밀번호) 마스킹 확인 (과제 3)
       # 💡 [과제 3 포인트] 깃허브에 등록한 Secret을 환경 변수(env)로 불러옵니다.
       env: 
-        MY_SECRET: ${{ secrets.API_KEY }}
+        MY_SECRET: "${{ secrets.API_KEY }}"
       run: |
         echo "이 글씨 뒤에 비밀번호가 노출되면 안 됩니다!"
         echo "나의 API 키는 $MY_SECRET 입니다."
