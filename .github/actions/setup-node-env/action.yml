@@ -1,0 +1,19 @@
+name: 'Setup Node Environment'
+description: 'Node.js 환경을 세팅하고 npm 패키지를 캐싱합니다.'
+inputs:
+  node-version:
+    description: '사용할 Node.js 버전'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Node.js 세팅 및 캐싱 (최적화)
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+        
+    - name: 패키지 설치
+      run: npm install
+      shell: bash
