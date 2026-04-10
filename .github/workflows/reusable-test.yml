@@ -1,0 +1,26 @@
+name: Reusable Test Workflow
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+      node-version:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ${{ inputs.os }}
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+        
+      - name: 공통 환경 세팅 (Composite Action 호출)
+        uses: ./.github/actions/setup-node-env
+        with:
+          node-version: ${{ inputs.node-version }}
+          
+      - name: 테스트 실행
+        run: npm run test

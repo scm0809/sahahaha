@@ -1,0 +1,45 @@
+name: 8주차 최적화 파이프라인
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # 1. 변경된 파일이 있는지 먼저 감지
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      src-changed: ${{ steps.filter.outputs.src }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: 변경 파일 감지기
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            src:
+              - 'package.json'
+              - 'src/**'
+
+  # 2. Matrix 전략 + 재사용 템플릿(Reusable) 호출
+  matrix-test:
+    needs: check-changes
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18.x, 20.x]
+    uses: ./.github/workflows/reusable-test.yml 
+    with:
+      os: ${{ matrix.os }}
+      node-version: ${{ matrix.node-version }}
+
+  # 3. 조건부 배포 (변경된 파일이 있을 때만 실행)
+  deploy:
+    needs: [check-changes, matrix-test]
+    if: ${{ needs.check-changes.outputs.src-changed == 'true' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 배포 수행
+        run: echo "🚀 핵심 파일 변경이 감지되어 main 배포를 진행합니다!"

@@ -1,0 +1,7 @@
+{
+  "name": "week8-assignment",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"✅ 완벽하게 테스트를 통과했습니다!\""
+  }
+}
