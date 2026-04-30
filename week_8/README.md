@@ -1,4 +1,5 @@
 # 8주차 과제: GitHub Actions 파이프라인 고도화 및 최적화
+ 💡 **안내:** 본 문서는 생성형 AI의 도움을 받아 작성되었습니다.
 
 ## 🎯 과제 목표
 * Matrix 전략을 통한 크로스 플랫폼/버전 테스트 자동화
@@ -28,3 +29,8 @@
 ## 3. 실행 결과 인증
 * **사진 1:** 전체 파이프라인 성공 및 Deploy 스킵 확인 (49s 대기 시간 포함본)
 * **사진 2:** 세부 로그에서 **8초(8s)** 만에 성공한 최적화 성능 인증샷
+
+* <img width="2813" height="949" alt="스크린샷 2026-04-10 141519" src="https://github.com/user-attachments/assets/9b882716-0411-4bd0-8c5b-b474bbc1e529" />
+
+
+* <img width="2794" height="1304" alt="스크린샷 2026-04-10 142013" src="https://github.com/user-attachments/assets/89011582-a379-4fe2-bf46-020f2565dbdb" />

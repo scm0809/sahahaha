@@ -1,4 +1,5 @@
 # 7주차 과제: CI/CD 파이프라인 구축
+ 💡 **안내:** 본 문서는 생성형 AI의 도움을 받아 작성되었습니다.
 
 ![CI status](https://github.com/scm0809/sahahaha/actions/workflows/ci.yml/badge.svg)
 ![Complex workflow status](https://github.com/scm0809/sahahaha/actions/workflows/complex.yml/badge.svg)
