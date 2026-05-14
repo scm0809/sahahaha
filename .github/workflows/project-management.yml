@@ -1,0 +1,35 @@
+name: Project Management Workflow
+
+# 1. 언제 실행할지(트리거) 설정
+on:
+  issues:
+    types: [opened]      # 새 이슈가 생성되었을 때 (자동 응답용)
+  issue_comment:
+    types: [created]     # 댓글이 달렸을 때
+  schedule:
+    - cron: '0 9 * * 1'  # 매주 월요일 오전 9시 (주간 요약용)
+  workflow_dispatch:     # 필요할 때 수동으로 버튼 눌러 실행
+
+jobs:
+  # 2. 자동 응답 워크플로우 (초안)
+  auto-reply:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reply to new issue
+        run: echo "새로운 이슈가 등록되었습니다. 곧 확인하겠습니다!"
+
+  # 3. SLA(응답 시간) 추적 워크플로우 (초안)
+  sla-tracking:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check SLA
+        run: echo "이슈 응답 시간을 추적 중입니다..."
+
+  # 4. 주간 요약 워크플로우 (초안)
+  weekly-summary:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate weekly report
+        run: echo "지난 한 주간의 활동 요약을 생성합니다."
