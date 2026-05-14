@@ -11,7 +11,7 @@
   - **배경**: 사하구청 문서 기반 RAG 시스템 구축을 위한 효율적 벡터 검색 필요
   - **결정**: 로컬 세팅이 간편하고 Python 연동성이 우수한 ChromaDB 채택
   - **결과**: 초기 프로토타입 개발 속도 향상 (상용화 시 마이그레이션 고려)
-* 🔗 **[ADR 목록 바로가기](./docs/adr/)**
+* 🔗 **[ADR 목록 바로가기](https://github.com/scm0809/sahahaha/tree/main/week_5/adr)**
 
 ## 3. 운영 자동화 워크플로우 설계 (선택 과제)
 * Auto-reply, SLA Tracking, Weekly Summary 워크플로우 초안 구성
