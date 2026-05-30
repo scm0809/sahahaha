@@ -1,0 +1,34 @@
+name: Docker Image Build and Push
+
+on:
+  workflow_dispatch: # 이것도 우리가 원할 때 수동으로 버튼 눌러 실행하도록 설정!
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: scm0809/sahahaha
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # GHCR에 이미지를 올리기 위해 쓰기 권한 필요
+
+    steps:
+      - name: 1. 내 코드 가져오기 (Checkout)
+        uses: actions/checkout@v4
+
+      - name: 2. GitHub 컨테이너 레지스트리(GHCR) 로그인
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 3. Docker 이미지 빌드 및 푸시!
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          # ghcr.io/scm0809/sahahaha:latest 라는 이름으로 저장됩니다.
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
