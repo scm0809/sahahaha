@@ -9,11 +9,13 @@
 * **내용:** GitHub Actions를 사용하여 코드를 npm 패키지로 포장하고 GitHub Packages에 배포했습니다.
 * **버전 업데이트:** `v1.0.0` 최초 배포 후, 패치를 통해 `v1.0.1`로 성공적으로 버전업하여 재배포를 완료했습니다.
 * **패키지 경로:** `ghcr.io/scm0809/sahahaha`
+<img width="1569" height="1252" alt="image" src="https://github.com/user-attachments/assets/34ffbbc5-af73-4f9a-8f5f-fc0653225ea7" />
 
 ### 2. Docker 이미지 자동 빌드 및 Push (GHCR)
 * **내용:** `Dockerfile`을 작성하여 Node.js 앱을 컨테이너화했습니다.
 * **자동화:** GitHub Actions(`docker-image.yml`)를 통해 코드가 푸시될 때마다 Docker 이미지를 자동으로 빌드하고 GitHub Container Registry(GHCR)에 푸시하도록 구성했습니다.
 * **로컬 실행 검증:** 깃허브에 올라간 도커 이미지를 로컬 컴퓨터로 `pull` 받아 성공적으로 `run` 되는 것을 확인했습니다.
+<img width="1048" height="337" alt="스크린샷 2026-05-30 202319" src="https://github.com/user-attachments/assets/06b1f163-c437-4bd0-af57-d57d2cfa2522" />
 
 ### 3. Dependabot 보안 자동화 세팅
 * **내용:** `.github/dependabot.yml` 파일을 생성하여 저장소의 보안 취약점을 정기적으로 검사하도록 설정했습니다.
