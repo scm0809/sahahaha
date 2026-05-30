@@ -1,0 +1,28 @@
+name: NPM Security Audit
+
+on:
+  workflow_dispatch: # 수동 실행 버튼
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # 봇이 깃허브 이슈(Issue)를 쓸 수 있도록 권한 부여
+      contents: read
+
+    steps:
+      - name: 1. 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: 2. npm audit 보안 검사 실행 및 리포트 저장
+        # 에러가 나도 워크플로우가 멈추지 않게 || true 를 붙임
+        run: npm audit > audit-report.txt || true 
+
+      - name: 3. 검사 결과를 깃허브 이슈(Issue)로 자동 발행
+        run: |
+          gh issue create \
+            --title "🚨 주간 npm 보안 스캔 리포트" \
+            --body-file audit-report.txt \
+            --label "security"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
