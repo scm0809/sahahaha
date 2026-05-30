@@ -1,0 +1,14 @@
+# Dependabot 버전 설정
+version: 2
+updates:
+  # 1. npm 패키지(package.json)의 보안 취약점을 매주 감시합니다.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # 2. 깃허브 액션(.github/workflows)의 보안 취약점을 매주 감시합니다.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
