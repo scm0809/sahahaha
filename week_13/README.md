@@ -10,7 +10,8 @@
 - **가성비/리뷰집착형 (user_03, user_06, user_07, user_09, user_10)**: 변수에 따른 유동적 흐름.
 
 ### 🖥️ LLM 페르소나 시뮬레이션 구동 로그
-![Persona Log](./persona_log.png)
+<img width="1299" height="563" alt="스크린샷 2026-05-30 230956" src="https://github.com/user-attachments/assets/cc6eab0a-93fc-431e-ae7a-48ee15a211ae" />
+
 
 ---
 
@@ -20,7 +21,8 @@
 - **핵심 지표 (KPI)**: 구매 전환율 (Conversion Rate)
 
 ### 📊 수집된 2주간의 RAW 실험 데이터셋 (.csv)
-![CSV Data](./csv_data.png)
+<img width="1518" height="628" alt="스크린샷 2026-05-30 230945" src="https://github.com/user-attachments/assets/e2f9e0e9-b06a-48b7-a53d-3f7882423dc8" />
+
 
 ### 📈 실험 데이터 분석 결과 Summary
 - **Control (기존 Red 버튼 그룹)**: 평균 전환율 약 **38%** 기록
