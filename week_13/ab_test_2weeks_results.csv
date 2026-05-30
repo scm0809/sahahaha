@@ -1,0 +1,11 @@
+timestamp,user_id,persona,group,converted
+2026-05-24T03:20:46.177Z,user_01,깐깐한 분석가,control(기존 Red),FAIL
+2026-05-24T08:01:43.717Z,user_02,충동 구매자,treatment(신규 Blue),SUCCESS
+2026-05-25T20:40:09.869Z,user_03,가성비 따지는 대학생,control(기존 Red),SUCCESS
+2026-05-17T00:15:53.830Z,user_04,트렌드 세터,treatment(신규 Blue),SUCCESS
+2026-05-29T08:38:42.740Z,user_05,의심 많은 쇼핑객,control(기존 Red),FAIL
+2026-05-18T09:44:47.400Z,user_06,기술 얼리어답터,treatment(신규 Blue),SUCCESS
+2026-05-25T09:46:52.959Z,user_07,미니멀리스트,control(기존 Red),SUCCESS
+2026-05-30T13:31:36.545Z,user_08,바쁜 직장인,treatment(신규 Blue),SUCCESS
+2026-05-29T00:28:44.079Z,user_09,리뷰 집착러,control(기존 Red),FAIL
+2026-05-25T04:33:00.511Z,user_10,선물 고르는 사람,treatment(신규 Blue),SUCCESS
