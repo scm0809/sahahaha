@@ -1,6 +1,14 @@
 {
-  "name": "week8-assignment",
+  "name": "@scm0809/sahahaha",
   "version": "1.0.0",
+  "description": "9주차 패키지 배포 테스트",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scm0809/sahahaha.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "echo \"✅ 완벽하게 테스트를 통과했습니다!\""
   }
