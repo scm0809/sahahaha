@@ -1,0 +1,17 @@
+﻿{
+  "flags": {
+    "new_ui_theme": true,
+    "beta_feature_access": ["user_123", "user_456"],
+    "maintenance_mode": false
+  },
+  "ab_test": {
+    "experiment_name": "checkout_button_color",
+    "variants": ["control", "treatment"],
+    "allocation_logic": "hash(user_id) % 2"
+  },
+  "canary_rollout": {
+    "feature": "payment_v2",
+    "current_traffic_percent": 10,
+    "health_check_passed": false
+  }
+}

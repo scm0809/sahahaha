@@ -1,0 +1,7 @@
+﻿[2023-11-15 10:00:01] [EVENT] User: user_10 | Experiment: checkout_button_color | Assigned: control
+[2023-11-15 10:02:15] [EVENT] User: user_11 | Experiment: checkout_button_color | Assigned: treatment
+[2023-11-15 10:05:30] [EVENT] User: user_10 | Experiment: checkout_button_color | Assigned: control (일관성 유지됨)
+[2023-11-15 10:10:00] [SYSTEM] Canary Rollout 'payment_v2' - 1% Traffic Started
+[2023-11-15 10:15:00] [SYSTEM] Canary Rollout 'payment_v2' - 10% Traffic Started
+[2023-11-15 10:20:00] [ERROR] Health Check Failed: High Latency Detected in 'payment_v2'
+[2023-11-15 10:20:01] [SYSTEM] Rollback Triggered: 'payment_v2' traffic reset to 0% (자동 롤백 완료)
